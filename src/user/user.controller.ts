@@ -1,20 +1,22 @@
-import { Controller, Get, Patch, Post, Delete } from '@nestjs/common';
+import { Controller, Get, Patch, Post, Delete, Logger } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
 import { User } from './user.entity';
-import { Logger } from 'nestjs-pino';
 @Controller('user')
 export class UserController {
   constructor(
     private userService: UserService,
     private configService: ConfigService,
-    private logger: Logger,
+    private readonly logger: Logger,
   ) {
     this.logger.log('UserController init');
   }
 
   @Get()
   getUsers(): any {
+    this.logger.log(`请求getUsers成功`);
+    this.logger.warn(`请求getUsers成功`);
+    this.logger.error(`请求getUsers成功`);
     return this.userService.findAll();
   }
 
