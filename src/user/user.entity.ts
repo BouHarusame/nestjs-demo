@@ -6,6 +6,7 @@ import {
   OneToMany,
   OneToOne,
   ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Roles } from 'src/roles/entities/role.entity';
@@ -27,5 +28,6 @@ export class User {
   logs: Logs[];
 
   @ManyToMany(() => Roles, (roles) => roles.users)
+  @JoinTable({ name: 'users_roles' })
   roles: Roles[];
 }
