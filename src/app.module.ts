@@ -7,8 +7,10 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigEnum } from './enum/config.enum';
 import { User } from './user/user.entity';
 import { Profile } from './user/profile.entity';
-import { Roles } from './roles/roles.entity';
-import { Logs } from './logs/logs.entity';
+import { Roles } from './roles/entities/role.entity';
+import { Logs } from './logs/entities/log.entity';
+import { LogsModule } from './logs/logs.module';
+import { RolesModule } from './roles/roles.module';
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 
 @Global()
@@ -58,6 +60,8 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
         } as TypeOrmModuleOptions),
     }),
     UserModule,
+    LogsModule,
+    RolesModule,
   ],
   controllers: [],
   providers: [Logger],

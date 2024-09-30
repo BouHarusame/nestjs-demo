@@ -1,4 +1,4 @@
-import { Logs } from 'src/logs/logs.entity';
+import { Logs } from 'src/logs/entities/log.entity';
 import {
   Entity,
   Column,
@@ -8,7 +8,7 @@ import {
   ManyToMany,
 } from 'typeorm';
 import { Profile } from './profile.entity';
-import { Roles } from 'src/roles/roles.entity';
+import { Roles } from 'src/roles/entities/role.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
